@@ -11,8 +11,8 @@ class CategoryDaerah extends Model
 
     protected $guarded = ['id'];
 
-    public function produk()
+    public function catatan_keluar()
     {
-        return $this->hasMany(Produk::class);
+        return $this->hasMany(CatatanKeluar::class);
     }
 }

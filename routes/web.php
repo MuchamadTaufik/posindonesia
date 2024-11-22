@@ -44,10 +44,10 @@ Route::group(['middleware' => ['auth', 'role:staff']], function () {
     Route::put('/kategori-daerah/update/{categoryDaerah}', [CategoryDaerahController::class, 'update'])->name('category-daerah.update');
     Route::delete('/kategori-daerah/delete/{categoryDaerah}', [CategoryDaerahController::class, 'destroy'])->name('category-daerah.delete');
 
-    Route::get('/produk-masuk', [ProdukController::class, 'indexMasuk'])->name('produk.masuk');
-    Route::get('/produk-masuk/create', [ProdukController::class, 'createMasuk'])->name('produk.masuk.create');
+    Route::get('/produk-masuk', [ProdukController::class, 'index'])->name('produk.masuk');
+    Route::get('/produk-masuk/create', [ProdukController::class, 'create'])->name('produk.masuk.create');
     Route::post('/produk-masuk/store', [ProdukController::class, 'store'])->name('produk.masuk.store');
-    Route::get('/produk-masuk/edit/{produk}', [ProdukController::class, 'editMasuk'])->name('produk.masuk.edit');
-    Route::put('/produk-masuk/update/{produk}', [ProdukController::class, 'updateMasuk'])->name('produk.masuk.update');
+    Route::get('/produk-masuk/edit/{produk}', [ProdukController::class, 'edit'])->name('produk.masuk.edit');
+    Route::put('/produk-masuk/update/{produk}', [ProdukController::class, 'update'])->name('produk.masuk.update');
     Route::delete('/produk-masuk/delete/{produk}', [ProdukController::class, 'destroy'])->name('produk.masuk.delete');
 });

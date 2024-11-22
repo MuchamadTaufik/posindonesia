@@ -13,19 +13,17 @@ return new class extends Migration
     {
         Schema::create('produks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('category_produk_id');
             $table->foreign('category_produk_id')->references('id')->on('category_produks')->onDelete('cascade');
-            $table->unsignedBigInteger('category_daerah_id');
-            $table->foreign('category_daerah_id')->references('id')->on('category_daerahs')->onDelete('cascade');
             $table->string('item_code')->unique();
+            $table->string('nomor_ido')->unique();
+            $table->string('serial_number_awal')->unique();
+            $table->string('serial_number_akhir')->unique();
             $table->string('name');
             $table->integer('total_dikirim');
-            $table->integer('total_keluar')->nullable();
-            $table->integer('total_produk');
             $table->date('waktu_masuk');
-            $table->date('waktu_keluar')->nullable();
             $table->timestamps();
         });
     }

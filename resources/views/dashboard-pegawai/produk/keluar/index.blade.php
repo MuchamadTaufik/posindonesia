@@ -20,12 +20,11 @@
                      <tr>
                         <th>No.</th>
                         <th>Code Produk</th>
-                        <th>Nama Produk</th>
-                        <th>Nomor IDO</th>
-                        <th>Serial Number Awal</th>
-                        <th>Serial Number Akhir</th>
                         <th>Staff Penginput</th>
                         <th>Category Produk</th>
+                        <th>Category Daerah</th>
+                        <th>Kode Daerah</th>
+                        <th>Nama Produk</th>
                         <th>Jumlah Dikirim</th>
                         <th>Tanggal Masuk</th>
                         <th style="width: 10%">Action</th>
@@ -34,7 +33,7 @@
                   <tbody>
                      @if ($produk->isEmpty())
                         <tr>
-                           <td colspan="11" class="text-center">Data belum tersedia</td>
+                           <td colspan="10" class="text-center">Data belum tersedia</td>
                         </tr>
                      @else
                      @foreach ($produk as $data)
@@ -42,12 +41,11 @@
                         <tr>
                            <td>{{ $loop->iteration }}.</td>
                            <td>{{ $data->item_code }}</td>
-                           <td>{{ $data->name }}</td>
-                           <td>{{ $data->nomor_ido }}</td>
-                           <td>{{ $data->serial_number_awal }}</td>
-                           <td>{{ $data->serial_number_akhir }}</td>
                            <td>{{ $data->user->name }}</td>
-                           <td>{{ $data->categoryProduk->name}}</td>
+                           <td>{{ $data->categoryProduk->name ?? '-' }}</td>
+                           <td>{{ $data->categoryDaerah->name ?? '-'}}</td>
+                           <td>{{ $data->categoryDaerah->code ?? '-'}}</td>
+                           <td>{{ $data->name }}</td>
                            <td>{{ $data->total_dikirim }}</td>
                            <td>{{ $data->waktu_masuk }}</td>
                            <td>

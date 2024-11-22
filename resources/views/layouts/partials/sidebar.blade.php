@@ -52,32 +52,17 @@
             </span>
             <h4 class="text-section">Data</h4>
          </li>
-         <li class="nav-item {{ Route::is('produk*') ? 'active' : '' }}">
+         <li class="nav-item {{ Route::is('produk.masuk*') ? 'active' : '' }}">
             <a href="{{ route('produk.masuk') }}">
                <i class="fas fa-layer-group"></i>
                <p>Produk Masuk</p>
             </a>
          </li>
          <li class="nav-item">
-            <a data-bs-toggle="collapse" href="#sidebarLayouts">
+            <a href="">
                <i class="fas fa-th-list"></i>
                <p>Produk Keluar</p>
-               <span class="caret"></span>
             </a>
-            <div class="collapse" id="sidebarLayouts">
-               <ul class="nav nav-collapse">
-                  <li>
-                  <a href="sidebar-style-2.html">
-                     <span class="sub-item">Sidebar Style 2</span>
-                  </a>
-                  </li>
-                  <li>
-                  <a href="icon-menu.html">
-                     <span class="sub-item">Icon Menu</span>
-                  </a>
-                  </li>
-               </ul>
-            </div>
          </li>
          <li class="nav-item">
             <a data-bs-toggle="collapse" href="#forms">

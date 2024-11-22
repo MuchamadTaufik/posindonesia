@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Produk extends Model
+class CatatanKeluar extends Model
 {
     use HasFactory;
 
@@ -16,13 +16,8 @@ class Produk extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function categoryProduk()
+    public function categoryDaerah()
     {
-        return $this->belongsTo(CategoryProduk::class);
-    }
-
-    public function catatan_keluar()
-    {
-        return $this->hasMany(CatatanKeluar::class);
+        return $this->belongsTo(CategoryDaerah::class);
     }
 }

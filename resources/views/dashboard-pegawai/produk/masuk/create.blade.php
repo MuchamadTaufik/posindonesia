@@ -44,16 +44,9 @@
                            </div>
                            <div class="col-md-6">
                               <div class="form-group">
-                                    <label for="category_daerah_id">Kategori Daerah</label>
-                                    <select class="form-control @error('category_daerah_id') is-invalid @enderror" id="category_select" name="category_daerah_id" required value="{{ old('category_daerah_id') }}">
-                                       <option value="" disabled selected>Pilih Kategori</option>
-                                       @foreach($categoryDaerah as $data)
-                                          <option value="{{ $data->id }}" {{ (old('category_daerah_id') ?? '') == $data->id ? 'selected' : '' }}>
-                                             {{ $data->name }}
-                                          </option>
-                                       @endforeach
-                                    </select>
-                                    @error('category_daerah_id')
+                                    <label for="name">Nama Produk</label>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Masukan Nama Produk..." value="{{ old('name') }}" required/>
+                                    @error('name')
                                        <div class="invalid-feedback">
                                           {{ $message }}
                                        </div>
@@ -62,9 +55,31 @@
                            </div>
                            <div class="col-md-6">
                               <div class="form-group">
-                                    <label for="name">Nama Produk</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Masukan Nama Produk..." value="{{ old('name') }}" required/>
-                                    @error('name')
+                                    <label for="nomor_ido">Nomor IDO</label>
+                                    <input type="text" class="form-control @error('nomor_ido') is-invalid @enderror" id="nomor_ido" name="nomor_ido" placeholder="Masukan Nomor IDO..." value="{{ old('nomor_ido') }}" required/>
+                                    @error('nomor_ido')
+                                       <div class="invalid-feedback">
+                                          {{ $message }}
+                                       </div>
+                                    @enderror
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                    <label for="serial_number_awal">Serial Number Awal</label>
+                                    <input type="number" class="form-control @error('serial_number_awal') is-invalid @enderror" id="serial_number_awal" name="serial_number_awal" placeholder="Masukan Serial Number Awal..." value="{{ old('serial_number_awal') }}" required/>
+                                    @error('serial_number_awal')
+                                       <div class="invalid-feedback">
+                                          {{ $message }}
+                                       </div>
+                                    @enderror
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                    <label for="serial_number_akhir">Serial Number Akhir</label>
+                                    <input type="number" class="form-control @error('serial_number_akhir') is-invalid @enderror" id="serial_number_akhir" name="serial_number_akhir" placeholder="Masukan Serial Number Akhir..." value="{{ old('serial_number_akhir') }}" required/>
+                                    @error('serial_number_akhir')
                                        <div class="invalid-feedback">
                                           {{ $message }}
                                        </div>
