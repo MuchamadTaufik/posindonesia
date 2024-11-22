@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produk;
-use App\Http\Requests\StoreProdukRequest;
-use App\Http\Requests\UpdateProdukRequest;
+use App\Models\LogActivity;
 use App\Models\CategoryDaerah;
 use App\Models\CategoryProduk;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreProdukRequest;
+use App\Http\Requests\UpdateProdukRequest;
 
 class ProdukController extends Controller
 {
@@ -58,6 +59,23 @@ class ProdukController extends Controller
         $validateData['item_code'] = $newCode;
 
         Produk::create($validateData);
+
+        $user = auth()->user()->name;
+        LogActivity::record(
+            "Produk Masuk telah ditambahkan oleh '{$user}'",
+            "Produk Baru bernama '{$request->name}', kode produk '{$request->item_code} , Telah Berhasil ditambahkan",
+            null,
+            false, 
+            'kepala'
+        );
+
+        LogActivity::record(
+            "Produk Masuk telah ditambahkan oleh '{$user}'",
+            "Produk Baru bernama '{$request->name}', kode produk '{$request->item_code} ,Telah Berhasil ditambahkan",
+            null,
+            false, 
+            'staff'
+        );
 
         toast()->success('Berhasil', 'Produk Masuk Berhasil ditambahkan');
         return redirect('/produk-masuk')->withInput();

@@ -5,6 +5,7 @@ use App\Http\Controllers\CatatanKeluarController;
 use App\Http\Controllers\CategoryDaerahController;
 use App\Http\Controllers\CategoryProdukController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LogActivityController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('home');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/notification', [LogActivityController::class, 'index'])->name('notification');
+    Route::delete('/notification/{logActivity}', [LogActivityController::class, 'destroy'])->name('notification.delete');
 });
 
 Route::group(['middleware' => 'guest'], function () {

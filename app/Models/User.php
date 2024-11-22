@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(CatatanKeluar::class);
     }
+
+    public function logActivities()
+    {
+        return $this->hasMany(LogActivity::class);
+    }
 }
