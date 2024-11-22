@@ -15,7 +15,7 @@
                            <div class="col-md-12">
                               <div class="form-group">
                                     <label for="name">Nama Kategori Produk</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Masukan Nama Kategori Produk..." value="{{ old('name') }}"/>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Masukan Nama Kategori Produk..." value="{{ old('name') }}" required/>
                                     @error('name')
                                        <div class="invalid-feedback">
                                           {{ $message }}

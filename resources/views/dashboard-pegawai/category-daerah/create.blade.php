@@ -15,7 +15,7 @@
                            <div class="col-md-6">
                               <div class="form-group">
                                     <label for="name">Nama Kategori Daerah</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Masukan Nama Kategori Daerah..." value="{{ old('name') }}"/>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Masukan Nama Kategori Daerah..." value="{{ old('name') }}" required/>
                                     @error('name')
                                        <div class="invalid-feedback">
                                           {{ $message }}
@@ -26,7 +26,7 @@
                            <div class="col-md-6">
                               <div class="form-group">
                                     <label for="code">Code Daerah</label>
-                                    <input type="text" class="form-control @error('code') is-invalid @enderror" id="code" name="code" placeholder="Masukan Kode Daerah..." value="{{ old('code') }}"/>
+                                    <input type="text" class="form-control @error('code') is-invalid @enderror" id="code" name="code" placeholder="Masukan Kode Daerah..." value="{{ old('code') }}" required/>
                                     @error('code')
                                        <div class="invalid-feedback">
                                           {{ $message }}
