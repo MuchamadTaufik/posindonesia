@@ -42,6 +42,7 @@
     <link rel="stylesheet" href="assets/css/demo.css" />
   </head>
   <body>
+    @include('sweetalert::alert')
     <div class="wrapper">
       <!-- Sidebar -->
         @include('layouts.partials.sidebar')
