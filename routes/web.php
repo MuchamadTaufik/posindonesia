@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryDaerahController;
 use App\Http\Controllers\CategoryProdukController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -34,4 +35,11 @@ Route::group(['middleware' => ['auth', 'role:staff']], function () {
     Route::get('/kategori-produk/edit/{categoryProduk}', [CategoryProdukController::class, 'edit'])->name('category-produk.edit');
     Route::put('/kategori-produk/update/{categoryProduk}', [CategoryProdukController::class, 'update'])->name('category-produk.update');
     Route::delete('/kategori-produk/delete/{categoryProduk}', [CategoryProdukController::class, 'destroy'])->name('category-produk.delete');
+
+    Route::get('/kategori-daerah', [CategoryDaerahController::class, 'index'])->name('category-daerah');
+    Route::get('/kategori-daerah/create', [CategoryDaerahController::class, 'create'])->name('category-daerah.create');
+    Route::post('/kategori-daerah/store', [CategoryDaerahController::class, 'store'])->name('category-daerah.store');
+    Route::get('/kategori-daerah/edit/{categoryDaerah}', [CategoryDaerahController::class, 'edit'])->name('category-daerah.edit');
+    Route::put('/kategori-daerah/update/{categoryDaerah}', [CategoryDaerahController::class, 'update'])->name('category-daerah.update');
+    Route::delete('/kategori-daerah/delete/{categoryDaerah}', [CategoryDaerahController::class, 'destroy'])->name('category-daerah.delete');
 });
