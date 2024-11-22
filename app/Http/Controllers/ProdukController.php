@@ -45,6 +45,8 @@ class ProdukController extends Controller
             'waktu_masuk' => 'required|date_format:Y-m-d'
         ]);
 
+        $validateData['total_produk'] = $validateData['total_dikirim'];
+
         // Generate item_code otomatis
         $lastProduk = Produk::orderBy('id', 'desc')->first();
         if ($lastProduk) {
@@ -90,7 +92,6 @@ class ProdukController extends Controller
                 'nomor_ido' => 'required|max:255|unique:produks,nomor_ido,' . $produk->id,
                 'serial_number_awal' => 'required|max:255|unique:produks,serial_number_awal,' . $produk->id,
                 'serial_number_akhir' => 'required|max:255|unique:produks,serial_number_akhir,' . $produk->id,
-                'total_dikirim' => 'required|integer|min:0',
                 'waktu_masuk' => 'required|date_format:Y-m-d'
             ];
 

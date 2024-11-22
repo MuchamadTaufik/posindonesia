@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CatatanKeluarController;
 use App\Http\Controllers\CategoryDaerahController;
 use App\Http\Controllers\CategoryProdukController;
 use App\Http\Controllers\DashboardController;
@@ -50,4 +51,11 @@ Route::group(['middleware' => ['auth', 'role:staff']], function () {
     Route::get('/produk-masuk/edit/{produk}', [ProdukController::class, 'edit'])->name('produk.masuk.edit');
     Route::put('/produk-masuk/update/{produk}', [ProdukController::class, 'update'])->name('produk.masuk.update');
     Route::delete('/produk-masuk/delete/{produk}', [ProdukController::class, 'destroy'])->name('produk.masuk.delete');
+
+    Route::get('/produk-keluar', [CatatanKeluarController::class, 'index'])->name('produk.keluar');
+    Route::get('/produk-keluar/create', [CatatanKeluarController::class, 'create'])->name('produk.keluar.create');
+    Route::post('/produk-keluar/store', [CatatanKeluarController::class, 'store'])->name('produk.keluar.store');
+    Route::get('/produk-keluar/edit/{catatanKeluar}', [CatatanKeluarController::class, 'edit'])->name('produk.keluar.edit');
+    Route::put('/produk-keluar/update/{catatanKeluar}', [CatatanKeluarController::class, 'update'])->name('produk.keluar.update');
+    Route::delete('/produk-keluar/delete/{catatanKeluar}', [CatatanKeluarController::class, 'destroy'])->name('produk.keluar.delete');
 });

@@ -20,7 +20,6 @@ return new class extends Migration
             $table->unsignedBigInteger('category_daerah_id')->nullable();
             $table->foreign('category_daerah_id')->references('id')->on('category_daerahs')->onDelete('cascade');
             $table->integer('total_keluar');
-            $table->integer('total_produk');
             $table->date('waktu_keluar');
             $table->timestamps();
         });

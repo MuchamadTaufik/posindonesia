@@ -100,7 +100,7 @@
                            <div class="col-md-6">
                               <div class="form-group">
                                     <label for="waktu_masuk">Tanggal Masuk</label>
-                                    <input type="date" class="form-control @error('waktu_masuk') is-invalid @enderror" id="waktu_masuk" name="waktu_masuk" placeholder="Masukan Total Produk..." value="{{ old('waktu_masuk') }}" required/>
+                                    <input type="date" class="form-control @error('waktu_masuk') is-invalid @enderror" id="waktu_masuk" name="waktu_masuk" value="{{ old('waktu_masuk') }}" required/>
                                     @error('waktu_masuk')
                                        <div class="invalid-feedback">
                                           {{ $message }}

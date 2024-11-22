@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('serial_number_akhir')->unique();
             $table->string('name');
             $table->integer('total_dikirim');
+            $table->integer('total_produk');
             $table->date('waktu_masuk');
             $table->timestamps();
         });

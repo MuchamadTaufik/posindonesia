@@ -58,8 +58,8 @@
                <p>Produk Masuk</p>
             </a>
          </li>
-         <li class="nav-item">
-            <a href="">
+         <li class="nav-item {{ Route::is('produk.keluar*') ? 'active' : '' }}">
+            <a href="{{ route('produk.keluar') }}">
                <i class="fas fa-th-list"></i>
                <p>Produk Keluar</p>
             </a>

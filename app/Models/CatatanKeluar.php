@@ -20,4 +20,9 @@ class CatatanKeluar extends Model
     {
         return $this->belongsTo(CategoryDaerah::class);
     }
+
+    public function produk()
+    {
+        return $this->belongsTo(Produk::class);
+    }
 }

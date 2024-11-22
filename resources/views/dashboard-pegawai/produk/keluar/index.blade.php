@@ -7,10 +7,10 @@
          <div class="card">
             <div class="card-header">
                <div class="d-flex align-items-center">
-                  <h4 class="card-title">Produk Masuk</h4>
-                  <a href="{{ route('produk.masuk.create') }}" class="btn btn-primary btn-round ms-auto">
+                  <h4 class="card-title">Produk Keluar</h4>
+                  <a href="{{ route('produk.keluar.create') }}" class="btn btn-primary btn-round ms-auto">
                      <i class="fa fa-plus"></i>
-                     Tambah Produk
+                     Catat Produk Keluar
                   </a>
                </div>
             </div>
@@ -19,41 +19,39 @@
                   <thead>
                      <tr>
                         <th>No.</th>
+                        <th>Nama Produk</th>
                         <th>Code Produk</th>
                         <th>Staff Penginput</th>
-                        <th>Category Produk</th>
-                        <th>Category Daerah</th>
+                        <th>Jumlah keluar</th>
+                        <th>Tanggal Keluar</th>
+                        <th>Daerah Pengiriman</th>
                         <th>Kode Daerah</th>
-                        <th>Nama Produk</th>
-                        <th>Jumlah Dikirim</th>
-                        <th>Tanggal Masuk</th>
                         <th style="width: 10%">Action</th>
                      </tr>
                   </thead>
                   <tbody>
-                     @if ($produk->isEmpty())
+                     @if ($catatanKeluar->isEmpty())
                         <tr>
-                           <td colspan="10" class="text-center">Data belum tersedia</td>
+                           <td colspan="9" class="text-center">Data belum tersedia</td>
                         </tr>
                      @else
-                     @foreach ($produk as $data)
+                     @foreach ($catatanKeluar as $data)
                         
                         <tr>
                            <td>{{ $loop->iteration }}.</td>
-                           <td>{{ $data->item_code }}</td>
+                           <td>{{ $data->produk->name }}</td>
+                           <td>{{ $data->produk->item_code }}</td>
                            <td>{{ $data->user->name }}</td>
-                           <td>{{ $data->categoryProduk->name ?? '-' }}</td>
-                           <td>{{ $data->categoryDaerah->name ?? '-'}}</td>
-                           <td>{{ $data->categoryDaerah->code ?? '-'}}</td>
-                           <td>{{ $data->name }}</td>
-                           <td>{{ $data->total_dikirim }}</td>
-                           <td>{{ $data->waktu_masuk }}</td>
+                           <td>{{ $data->total_keluar }}</td>
+                           <td>{{ $data->waktu_keluar }}</td>
+                           <td>{{ $data->categoryDaerah->name}}</td>
+                           <td>{{ $data->categoryDaerah->code}}</td>
                            <td>
                               <div class="form-button-action">
-                                 <a href="{{ route('produk.masuk.edit', $data->id) }}" type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                 <a href="{{ route('produk.keluar.edit', $data->id) }}" type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
                                     <i class="fa fa-edit"></i>
                                  </a>
-                                    <form action="{{ route('produk.masuk.delete', $data->id) }}" method="POST">
+                                    <form action="{{ route('produk.keluar.delete', $data->id) }}" method="POST">
                                        @csrf
                                        @method('delete')
                                        <button type="submit" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove" onclick="return confirm('Apakah yakin ingin menghapus data?')">

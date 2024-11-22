@@ -77,17 +77,6 @@
                            </div>
                            <div class="col-md-6">
                               <div class="form-group">
-                                    <label for="total_dikirim">Total Produk</label>
-                                    <input type="number" class="form-control @error('total_dikirim') is-invalid @enderror" id="total_dikirim" name="total_dikirim" placeholder="Masukan Total Produk..." value="{{ old('total_dikirim', $produk->total_dikirim) }}" required/>
-                                    @error('total_dikirim')
-                                       <div class="invalid-feedback">
-                                          {{ $message }}
-                                       </div>
-                                    @enderror
-                              </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div class="form-group">
                                     <label for="waktu_masuk">Tanggal Masuk</label>
                                     <input type="date" class="form-control @error('waktu_masuk') is-invalid @enderror" id="waktu_masuk" name="waktu_masuk" placeholder="Masukan Total Produk..." value="{{ old('waktu_masuk', $produk->waktu_masuk) }}" required/>
                                     @error('waktu_masuk')
