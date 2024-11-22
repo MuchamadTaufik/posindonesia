@@ -33,5 +33,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'kepala@gmail.com',
             'password' => bcrypt('123456')
         ]);
+
+        $this->call(CategorySeeder::class);
     }
 }

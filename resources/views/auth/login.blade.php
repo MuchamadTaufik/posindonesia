@@ -163,10 +163,6 @@
             </div>
             
             <button type="submit" class="login-button">Login</button>
-            
-            <div class="register-link">
-               Don't have an account? <a href="#">Register here</a>
-            </div>
          </form>
    </div>
 </body>
