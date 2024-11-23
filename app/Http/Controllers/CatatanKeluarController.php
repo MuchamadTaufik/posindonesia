@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produk;
+use App\Models\LogActivity;
 use App\Models\CatatanKeluar;
+use App\Models\CategoryDaerah;
 use App\Http\Requests\StoreCatatanKeluarRequest;
 use App\Http\Requests\UpdateCatatanKeluarRequest;
-use App\Models\CategoryDaerah;
-use App\Models\Produk;
 
 class CatatanKeluarController extends Controller
 {
@@ -52,6 +53,31 @@ class CatatanKeluarController extends Controller
         $produk->save();
 
         CatatanKeluar::create($validateData);
+
+        $user = auth()->user()->name;
+        
+        $produkNama = $produk->name;
+        $produkItemCode = $produk->item_code;
+
+        // Mendapatkan nama category daerah dari model CategoryDaerah
+        $categoryDaerah = CategoryDaerah::find($request->category_daerah_id)->name;
+
+        // Mencatat aktivitas log
+        LogActivity::record(
+            "Produk Keluar telah ditambahkan oleh '{$user}'",
+            "Produk Keluar bernama '{$produkNama}', kode produk '{$produkItemCode}', dikirimkan ke '{$categoryDaerah}'",
+            null,
+            false,
+            'kepala'
+        );
+
+        LogActivity::record(
+            "Produk Keluar telah ditambahkan oleh '{$user}'",
+            "Produk Keluar bernama '{$produkNama}', kode produk '{$produkItemCode}', dikirimkan ke '{$categoryDaerah}'",
+            null,
+            false,
+            'staff'
+        );
 
         toast()->success('Berhasil', 'Catatan Produk Keluar Berhasil ditambahkan');
         return redirect('/produk-keluar')->withInput();

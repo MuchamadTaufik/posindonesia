@@ -64,8 +64,8 @@
                <p>Produk Keluar</p>
             </a>
          </li>
-         <li class="nav-item">
-            <a href="#forms">
+         <li class="nav-item {{ Route::is('laporan*') ? 'active' : '' }}">
+            <a href="{{ route('laporan') }}">
                <i class="fas fa-file"></i>
                <p>Laporan</p>
             </a>

@@ -5,6 +5,7 @@ use App\Http\Controllers\CatatanKeluarController;
 use App\Http\Controllers\CategoryDaerahController;
 use App\Http\Controllers\CategoryProdukController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LogActivityController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/notification', [LogActivityController::class, 'index'])->name('notification');
     Route::delete('/notification/{logActivity}', [LogActivityController::class, 'destroy'])->name('notification.delete');
+
+    Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
 });
 
 Route::group(['middleware' => 'guest'], function () {
