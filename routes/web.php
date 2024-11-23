@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryProdukController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LogActivityController;
+use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/notification/{logActivity}', [LogActivityController::class, 'destroy'])->name('notification.delete');
 
     Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
+    Route::get('/laporan/download', [LaporanController::class, 'download'])->name('laporan.download');
 });
 
 Route::group(['middleware' => 'guest'], function () {
@@ -65,4 +67,14 @@ Route::group(['middleware' => ['auth', 'role:staff']], function () {
     Route::get('/produk-keluar/edit/{catatanKeluar}', [CatatanKeluarController::class, 'edit'])->name('produk.keluar.edit');
     Route::put('/produk-keluar/update/{catatanKeluar}', [CatatanKeluarController::class, 'update'])->name('produk.keluar.update');
     Route::delete('/produk-keluar/delete/{catatanKeluar}', [CatatanKeluarController::class, 'destroy'])->name('produk.keluar.delete');
+    Route::get('/produk-keluar/surat/{catatanKeluar}', [LaporanController::class, 'surat'])->name('surat');
+});
+
+Route::group(['middleware' => ['auth', 'role:kepala']], function () {
+    Route::get('/daftar-pengguna', [PenggunaController::class, 'index'])->name('pengguna');
+    Route::get('/daftar-pengguna/create', [PenggunaController::class, 'create'])->name('pengguna.create');
+    Route::post('/daftar-pengguna/store', [PenggunaController::class, 'store'])->name('pengguna.store');
+    Route::get('/daftar-pengguna/edit/{user}', [PenggunaController::class, 'edit'])->name('pengguna.edit');
+    Route::put('/daftar-pengguna/update/{user}', [PenggunaController::class, 'update'])->name('pengguna.update');
+    Route::delete('/daftar-pengguna/delete/{user}', [PenggunaController::class, 'destroy'])->name('pengguna.delete');
 });

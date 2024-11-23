@@ -7,10 +7,10 @@
          <div class="card">
             <div class="card-header">
                <div class="d-flex align-items-center">
-                  <h4 class="card-title">Produk Keluar</h4>
-                  <a href="{{ route('produk.keluar.create') }}" class="btn btn-primary btn-round ms-auto">
+                  <h4 class="card-title">Daftar Pengguna</h4>
+                  <a href="{{ route('pengguna.create') }}" class="btn btn-primary btn-round ms-auto">
                      <i class="fa fa-plus"></i>
-                     Catat Produk Keluar
+                     Tambah Pengguna
                   </a>
                </div>
             </div>
@@ -19,45 +19,31 @@
                   <thead>
                      <tr>
                         <th>No.</th>
-                        <th>Nama Produk</th>
-                        <th>Code Produk</th>
-                        <th>Staff Penginput</th>
-                        <th>Jumlah keluar</th>
-                        <th>Tanggal Keluar</th>
-                        <th>Daerah Pengiriman</th>
-                        <th>Kode Daerah</th>
-                        <th>Surat</th>
+                        <th>Nama</th>
+                        <th>Email</th>
+                        <th>Role</th>
                         <th style="width: 10%">Action</th>
                      </tr>
                   </thead>
                   <tbody>
-                     @if ($catatanKeluar->isEmpty())
+                     @if ($user->isEmpty())
                         <tr>
-                           <td colspan="9" class="text-center">Data belum tersedia</td>
+                           <td colspan="3" class="text-center">Data belum tersedia</td>
                         </tr>
                      @else
-                     @foreach ($catatanKeluar as $data)
+                     @foreach ($user as $data)
                         
                         <tr>
                            <td>{{ $loop->iteration }}.</td>
-                           <td>{{ $data->produk->name }}</td>
-                           <td>{{ $data->produk->item_code }}</td>
-                           <td>{{ $data->user->name }}</td>
-                           <td>{{ $data->total_keluar }}</td>
-                           <td>{{ $data->waktu_keluar }}</td>
-                           <td>{{ $data->categoryDaerah->name}}</td>
-                           <td>{{ $data->categoryDaerah->code}}</td>
-                           <td>
-                              <a href="{{ route('surat', $data->id) }}">
-                                 Download
-                              </a>
-                           </td>
+                           <td>{{ $data->name }}</td>
+                           <td>{{ $data->email }}</td>
+                           <td>{{ $data->role }}</td>
                            <td>
                               <div class="form-button-action">
-                                 <a href="{{ route('produk.keluar.edit', $data->id) }}" type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                 <a href="{{ route('pengguna.edit', $data->id) }}" type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
                                     <i class="fa fa-edit"></i>
                                  </a>
-                                    <form action="{{ route('produk.keluar.delete', $data->id) }}" method="POST">
+                                    <form action="{{ route('pengguna.delete', $data->id) }}" method="POST">
                                        @csrf
                                        @method('delete')
                                        <button type="submit" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove" onclick="return confirm('Apakah yakin ingin menghapus data?')">

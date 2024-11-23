@@ -28,42 +28,54 @@
                <p>Dashboard</p>
             </a>
          </li>
-         <li class="nav-section">
-            <span class="sidebar-mini-icon">
-               <i class="fa fa-ellipsis-h"></i>
-            </span>
-            <h4 class="text-section">Components</h4>
-         </li>
-         <li class="nav-item {{ Route::is('category-produk*') ? 'active' : '' }}">
-            <a href="{{ route('category-produk') }}">
-               <i class="fas fa-list"></i>
-               <p>Kategori Produk</p>
-            </a>
-         </li>
-         <li class="nav-item {{ Route::is('category-daerah*') ? 'active' : '' }}">
-            <a href="{{ route('category-daerah') }}">
-               <i class="fas fa-list"></i>
-               <p>Kategori Daerah</p>
-            </a>
-         </li>
+         @can('isStaff')
+            <li class="nav-section">
+               <span class="sidebar-mini-icon">
+                  <i class="fa fa-ellipsis-h"></i>
+               </span>
+               <h4 class="text-section">Components</h4>
+            </li>
+            <li class="nav-item {{ Route::is('category-produk*') ? 'active' : '' }}">
+               <a href="{{ route('category-produk') }}">
+                  <i class="fas fa-list"></i>
+                  <p>Kategori Produk</p>
+               </a>
+            </li>
+            <li class="nav-item {{ Route::is('category-daerah*') ? 'active' : '' }}">
+               <a href="{{ route('category-daerah') }}">
+                  <i class="fas fa-list"></i>
+                  <p>Kategori Daerah</p>
+               </a>
+            </li>
+         @endcan
          <li class="nav-section">
             <span class="sidebar-mini-icon">
                <i class="fa fa-ellipsis-h"></i>
             </span>
             <h4 class="text-section">Data</h4>
          </li>
-         <li class="nav-item {{ Route::is('produk.masuk*') ? 'active' : '' }}">
-            <a href="{{ route('produk.masuk') }}">
-               <i class="fas fa-layer-group"></i>
-               <p>Produk Masuk</p>
-            </a>
-         </li>
-         <li class="nav-item {{ Route::is('produk.keluar*') ? 'active' : '' }}">
-            <a href="{{ route('produk.keluar') }}">
-               <i class="fas fa-th-list"></i>
-               <p>Produk Keluar</p>
-            </a>
-         </li>
+         @can('isStaff')
+            <li class="nav-item {{ Route::is('produk.masuk*') ? 'active' : '' }}">
+               <a href="{{ route('produk.masuk') }}">
+                  <i class="fas fa-layer-group"></i>
+                  <p>Produk Masuk</p>
+               </a>
+            </li>
+            <li class="nav-item {{ Route::is('produk.keluar*') ? 'active' : '' }}">
+               <a href="{{ route('produk.keluar') }}">
+                  <i class="fas fa-th-list"></i>
+                  <p>Produk Keluar</p>
+               </a>
+            </li>
+         @endcan
+         @can('isKepala')
+            <li class="nav-item {{ Route::is('pengguna*') ? 'active' : '' }}">
+               <a href="{{ route('pengguna') }}">
+                  <i class="fas fa-users"></i>
+                  <p>Daftar Pengguna</p>
+               </a>
+            </li>
+         @endcan
          <li class="nav-item {{ Route::is('laporan*') ? 'active' : '' }}">
             <a href="{{ route('laporan') }}">
                <i class="fas fa-file"></i>
